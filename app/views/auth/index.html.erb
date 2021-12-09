@@ -1,0 +1,26 @@
+<div class="login__wrapper">
+  <div class="login__navbar">
+    <div><%= link_to 'Регистрация', 'register' %></div>
+    <div><%= link_to 'Помощь', 'help' %></div>
+  </div>
+
+  <%= form_for :user, url: 'login', method: 'post', :html => { class: 'login__form' } do |form| %>
+    <div class="input-group mb-3 mt-4">
+      <div class="input-group-prepend">
+        <div class="input-group-text">@</div>
+      </div>
+      <%= form.email_field :email, placeholder: 'Почта', class: 'form-control' %>
+    </div>
+
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <div class="input-group-text">@</div>
+      </div>
+      <%= form.password_field :password, placeholder: 'Пароль', class: 'form-control' %>
+    </div>
+
+    <%= form.submit "Войти", class: 'btn btn-secondary btn-sm mt-1' %>
+  <% end %>
+</div>
+
+<%= javascript_pack_tag 'src/auth' %>

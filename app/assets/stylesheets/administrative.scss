@@ -1,0 +1,54 @@
+.teacher-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .container__navbar {
+    display: grid;
+    grid-template-rows: 2.5rem 3rem;
+
+    margin-bottom: 2rem;
+
+    .navbar__header {
+      font-size: 15px;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      background-color: lightsteelblue;
+
+      .navbar__header__logout {
+        input, input:hover {
+          all: revert;
+          background: transparent;
+          outline: none;
+          border: none;
+
+          &:hover {
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+
+  .teacher__content {
+    height: 100%;
+    margin: 0 8vw;
+  }
+
+  .navbar__content {
+    display: flex;
+    align-items: center;
+
+    box-shadow: 0 1px 5px 0 lightgrey;
+
+    .navbar__content__filling {
+      font-size: 15px;
+      margin: 0 12vw;
+    }
+  }
+}
+
+a {
+  margin: 1rem;
+}

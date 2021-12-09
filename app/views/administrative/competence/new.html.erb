@@ -1,0 +1,30 @@
+<div class="container text-center h-100">
+  <div class="row h-25">
+    <p class="h5">Назначение преподавателя</p>
+  </div>
+
+  <div class="row h-75">
+    <%= form_for :binding, url: administrative_competence_index_url, :html => { class: 'competence__new__form' } do |form| %>
+      <%= form.select :user_id,
+                      options_for_select(@teachers.all.map { |user| ["#{user.personal.surname} #{user.personal.firstname} #{user.personal.patronymic}", user.id] }),
+                      {},
+                      { class: 'form-select mb-3 mx-auto w-50' }
+      %>
+      <%= form.select :group_id,
+                      options_from_collection_for_select(@groups, :id, :caption),
+                      {},
+                      { class: 'form-select mb-3 mx-auto w-50' }
+      %>
+      <%= form.select :subject_id,
+                      {},
+                      {},
+                      { class: 'form-select mb-3 mx-auto w-50' }
+      %>
+
+      <%= form.submit 'Назначить', class: 'btn btn-success' %>
+    <% end %>
+  </div>
+
+</div>
+
+<%= javascript_pack_tag 'src/administrative/competence' %>

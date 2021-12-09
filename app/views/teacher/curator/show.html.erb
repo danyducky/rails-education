@@ -1,0 +1,60 @@
+<div class="container text-center">
+  <span class="fs-3 border border-2 border-secondary rounded py-1 px-3"><%= @group.caption %></span>
+
+  <% if @group.group_requests.length > 0 %>
+    <div class="mt-5">
+      <p class="h6">Заявки в группу</p>
+      <%= form_for :request, url: 'apply_student', :html => { class: 'curator__form' } do |form| %>
+        <table class="table">
+          <thead>
+            <th>№</th>
+            <th>Почта</th>
+            <th>ФИО</th>
+            <th>Комментарий</th>
+            <th>#</th>
+          </thead>
+          <tbody>
+          <% @group.group_requests.each_with_index do |request, index| %>
+            <tr>
+              <th scope="row"><%= index + 1 %></th>
+              <td><%= request.user.email %></td>
+              <td><%= "#{request.user.personal.surname} #{request.user.personal.firstname} #{request.user.personal.patronymic}" %></td>
+              <td><%= request.comment %></td>
+              <td><%= check_box_tag 'request_ids[]', request.id, false, class: 'form-check-input' %></td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+        <%= form.hidden_field :group_id, value: @group.id %>
+        <%= form.submit 'Одобрить', class: 'curator__request__button mt-3 btn btn-primary', disabled: true %>
+      <% end %>
+    </div>
+  <% end %>
+
+  <div class="mt-5">
+    <% if @group.students.length > 0 %>
+      <p class="h6">Состав группы</p>
+      <table class="table">
+        <thead>
+        <th>№</th>
+        <th>Почта</th>
+        <th>ФИО</th>
+        </thead>
+        <tbody>
+        <% @group.students.each_with_index do |student, index| %>
+          <tr>
+            <th scope="row"><%= index + 1 %></th>
+            <th><%= student.user.email %></th>
+            <th><%= "#{student.personal.surname} #{student.personal.firstname} #{student.personal.patronymic}" %></th>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    <% else %>
+      <p class="h6">В данный момент студенты отсутствуют!</p>
+  <% end %>
+  </div>
+
+</div>
+
+<%= javascript_pack_tag 'src/teacher/curator' %>

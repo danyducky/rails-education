@@ -1,0 +1,21 @@
+<%= stylesheet_link_tag 'register' %>
+
+<div class="d-flex flex-column text-center h-100">
+  <div class="mt-5">
+    <h1 style="font-size: 18px;">Подача заявки в учебную группу</h1>
+  </div>
+  <div class="my-auto">
+    <%= form_for :request do |form| %>
+      <%=
+        form.select :speciality_id,
+                    options_from_collection_for_select(@specialities, :id, :title),
+                    {},
+                    { class: 'form-select mb-3 mx-auto' }
+      %>
+      <%= form.select :group_id, {}, {}, { class: 'form-select mb-3 mx-auto' } %>
+      <%= form.submit 'Подать заявку', class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+</div>
+
+<%= javascript_pack_tag 'src/student/request' %>

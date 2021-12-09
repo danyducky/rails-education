@@ -1,0 +1,24 @@
+<div class="group__container">
+  <div class="group__header text-center mb-5">
+    <span>Ваши группы</span>
+  </div>
+
+
+  <div class="row row-cols-1 row-cols-md-2 g-4 w-50 mx-auto">
+    <% @groups.each do |group| %>
+      <div class="col">
+        <div class="card text-center mx-2 h-100">
+          <div class="card-body">
+            <h5 class="card-title mb-3 border-bottom pb-2"><%= group.caption %></h5>
+            <p class="card-text mb-3"><%= group.speciality.title %></p>
+            <%= link_to teacher_curator_path(id: group.id) do %>
+              <button type="button" class="btn btn-success btn-sm">Перейти</button>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+</div>
+

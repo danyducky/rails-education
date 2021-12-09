@@ -1,0 +1,21 @@
+<div class="container">
+  <blockquote class="blockquote text-center">
+    <p class="mb-0"><%= "#{@student.user.personal.surname} #{@student.user.personal.firstname} #{@student.user.personal.patronymic}" %></p>
+    <footer class="blockquote-footer mt-2">Текущая группа: <cite title="Source Title"><%= @student.group.caption %></cite></footer>
+  </blockquote>
+
+  <div class="row">
+
+    <div class="col-9">
+      qwe
+    </div>
+
+    <div class="col-3 border border-2 border-secondary rounded px-3 text-sm-start">
+      <% @student.group.students.each do |student| %>
+        <p class="my-3"><%= "#{student.personal.surname} #{student.personal.firstname} #{student.personal.patronymic}" %></p>
+      <% end %>
+    </div>
+
+  </div>
+
+</div>

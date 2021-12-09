@@ -1,0 +1,24 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  # For details on connection pooling, see Rails configuration guide
+  # https://guides.rubyonrails.org/configuring.html#database-pooling
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: postgres
+  password: 1
+  host: 172.24.43.138
+  port: 5432
+
+development:
+  <<: *default
+  database: pagin_development
+
+test:
+  <<: *default
+  database: pagin_test
+
+production:
+  <<: *default
+  database: pagin_production
+  username: pagin
+  password: <%= ENV['PAGIN_DATABASE_PASSWORD'] %>

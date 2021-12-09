@@ -1,0 +1,15 @@
+<div>
+  <% user = @request.user %>
+  <% personal = user.personal %>
+  <% group = @request.group %>
+
+  <span><%= render_fio(personal) %></span>
+  <div>Заявка <%= "№ #{@request.id}" %></div>
+  <div>Целевая группа: <%= group.caption %></div>
+  <div>Специальность: <%= group.speciality.title %></div>
+  <div>Время подачи: <%= to_readable_date(@request.created_at) %></div>
+
+  <%= form_with url: student_request_url, method: 'DELETE' do |form| %>
+    <%= form.submit 'Отменить заявку' %>
+  <% end %>
+</div>

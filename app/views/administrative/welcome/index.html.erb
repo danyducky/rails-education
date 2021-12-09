@@ -1,0 +1,24 @@
+<div class="container">
+  <p class="text-center fw-light fs-5">
+    Приветствую, <%= "#{@current_user.personal.surname} #{@current_user.personal.firstname} #{@current_user.personal.patronymic}!" %>
+  </p>
+
+  <div class="row row-cols-1 row-cols-md-1 g-4 w-50 mx-auto mt-5">
+    <div class="col">
+      <div class="card text-center mx-2 h-100">
+        <div class="card-body">
+          <h5 class="card-title mb-3 border-bottom pb-2">Работа с преподавателями</h5>
+          <p class="card-text mb-3">Назначение, просмотр и редактирование</p>
+          <%= link_to new_administrative_competence_path do %>
+            <button type="button" class="btn btn-success btn-sm">Создать</button>
+          <% end %>
+          <%= link_to administrative_competence_index_path do %>
+            <button type="button" class="btn btn-secondary btn-sm">Перейти</button>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% stylesheet_link_tag 'administrative_welcome' %>

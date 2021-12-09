@@ -1,0 +1,29 @@
+<% if (errors = flash[:user]) %>
+  <% if errors['email'] %>
+    <p>Электронная почта найдена в системе</p>
+  <% end %>
+<% end %>
+
+<% if flash[:personal] %>
+  <div class="personal">Персональные не верные</div>
+<% end %>
+
+<div class="register__wrapper">
+  <div class="register__navbar">
+    <div><%= link_to 'Ко входу', 'login' %></div>
+    <div><%= link_to 'Помощь', 'help' %></div>
+  </div>
+
+  <%= form_for :register, :html => {:class => "register__form"} do |form| %>
+    <%= form.email_field :email, placeholder: 'Введите ваш email*' %>
+    <%= form.text_field :firstname, placeholder: 'Введите ваше имя*' %>
+    <%= form.text_field :surname, placeholder: 'Введите вашу фамилию*' %>
+    <%= form.text_field :patronymic, placeholder: 'Введите ваше отчество' %>
+    <%= form.datetime_field :birth_date %>
+    <%= form.password_field :password, placeholder: 'Введите ваш пароль*' %>
+    <%= form.submit 'Зарегистрироваться', class: 'register__form__submit' %>
+  <% end %>
+</div>
+
+<%= stylesheet_link_tag 'register' %>
+<%= javascript_pack_tag 'src/register' %>

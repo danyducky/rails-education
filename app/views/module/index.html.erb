@@ -1,0 +1,18 @@
+<% if @systems.length == 0 %>
+  <div class="warning__wrapper">
+    <div class="warning__wrapper__message">
+      <span>Необходимо подать заявку в студенческую группу для дальнейшего использования учебной системы!</span>
+    </div>
+    <div class="warning__wrapper__image">
+      <%= link_to student_request_index_path do %>
+        <img src="/assets/touch.png" alt="Нажми сюда!">
+      <% end %>
+    </div>
+  </div>
+<% else %>
+  <% @systems.each do |system| %>
+    <%= link_to "#{system.route}/welcome" do %>
+      <span><%= system.short_caption %></span>
+    <% end %>
+  <% end %>
+<% end %>
